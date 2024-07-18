@@ -54,7 +54,7 @@ private:
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
-	class UParticleSystem* sMuzzleFlash
+	class UParticleSystem* MuzzleFlash;
 
 public:
 
