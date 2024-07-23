@@ -38,12 +38,20 @@ protected:
 	
 	void SetLookRates();
 
+	void FireButtonPressed();
+	void FireButtonReleased();
+	void StartFireTimer();
+	void AutoFireReset();
+
+
 	void CalCulateCrosshairSpread(float DeltaTime);
 
 	void StartCrosshairBulletFire();
 
 	UFUNCTION()
 	void FinishCrosshairBulletFire();
+
+
 
 public:	
 	// Called every frame
@@ -143,6 +151,14 @@ private:
 	bool bFiringBullet;
 
 	FTimerHandle CrosshairShooterTimer;
+
+
+	bool bFireButtonPressed;
+	bool bShouldFire;
+
+	float AutomaticFireRate;
+	FTimerHandle AutoFireTimer;
+
 
 
 public:
