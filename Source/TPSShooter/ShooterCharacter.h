@@ -51,7 +51,10 @@ protected:
 	UFUNCTION()
 	void FinishCrosshairBulletFire();
 
+	
+	bool TraceUnderCrosshairs(FHitResult& OutHitResult,FVector& OutHitLocation);
 
+	void TraceForItems();
 
 public:	
 	// Called every frame
@@ -159,7 +162,12 @@ private:
 	float AutomaticFireRate;
 	FTimerHandle AutoFireTimer;
 
+	bool bShouldTraceForItems;
 
+	int8 OverlappedItemCount;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Items", meta = (AllowPrivateAccess = "true"))
+	class AItem* TraceHitItemLastFrame;
 
 public:
 
@@ -169,5 +177,12 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	float GetCrossHairSpreadMultiplier() const;
+
+	FORCEINLINE int8 GetOverlappedItemCount() const {
+		return OverlappedItemCount;
+	}
+
+
+	void IncrementOverlappedItemCount(int8 Amount);
 
 };
