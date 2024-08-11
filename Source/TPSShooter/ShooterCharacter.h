@@ -56,6 +56,18 @@ protected:
 
 	void TraceForItems();
 
+	void EquipWeapon(class AWeapon* WeaponToEquip);
+
+	AWeapon* SpawnDefaultWeapon();
+
+	void DropWeapon();
+
+	void SelectButtonPressed();
+	void SelectButtonRelease();
+
+	void SwapWeapon(AWeapon* WeaponToSwap);
+
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -168,6 +180,18 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Items", meta = (AllowPrivateAccess = "true"))
 	class AItem* TraceHitItemLastFrame;
+
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	AWeapon* EquippedWeapon; 
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<AWeapon> DefaultWeaponClass;
+
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	AItem* TraceHitItem;
+
 
 public:
 
